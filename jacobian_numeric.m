@@ -16,7 +16,7 @@ T = zeros(4,4,5); %8 because we want to include the ground frame also
 T(:,:,1) = eye(4,4);
 T(:,:,2) = DH_transformation(alpha(1), d(1), theta(1), r(1));
 for i = 3:5
-     T(:,:,i) = T(:,:,i-1)*DH_transformation(alpha(i-1), d(i-1), theta(i-1), r(i-1))
+     T(:,:,i) = T(:,:,i-1)*DH_transformation(alpha(i-1), d(i-1), theta(i-1), r(i-1));
 end
 
 %% Jacobian Calculation
