@@ -27,3 +27,5 @@ for i = 2:5
 end
 J = simplify(J);
 J = J(1:6,1:3)
+Jred = J(1:3,:);
+detJred = simplify(det(Jred))
