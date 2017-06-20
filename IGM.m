@@ -1,4 +1,7 @@
 function [q1, q2, q3] = IGM(x, y, z, l2, l3)
+% q1, q2, q3 store the corresponding joint angles 
+% in radians
+
 q1 = 0;
 q2 = zeros(1, 2);
 q3 = zeros(1, 2);
@@ -87,4 +90,6 @@ else
        return;
     end
 end
+q2 = atan2(sin(q2), cos(q2)); % restricting values between -pi and pi
+q3 = atan2(sin(q3), cos(q3)); 
 end
