@@ -4,13 +4,13 @@ clc
 l2 = 0.20;
 l3 = 0.40;
 
-x =  0.0;
+x =  0.40;
 y =  0.0;
 z =  0.0;
 
 [q1, q2, q3] = IGM(x, y, z, l2, l3);
 
-if isreal(q1) && isreal(q2) && isreal(q3)
+if isreal(q1) && isreal(q2) && isreal(q3) 
 %% DH Params for 1st joint configs
 theta = [q1 q2(1) q3(1) 0];
 r = zeros(1,4);

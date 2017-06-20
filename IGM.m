@@ -1,4 +1,4 @@
-function [q1, q2, q3] = IGM(x, y, z, l2, l3)
+function [q1, q2, q3] = IGM(x, y, z, l2, l3, q1_lim, q2_lim, q3_lim)
 % q1, q2, q3 store the corresponding joint angles 
 % in radians
 
@@ -92,4 +92,13 @@ else
 end
 q2 = atan2(sin(q2), cos(q2)); % restricting values between -pi and pi
 q3 = atan2(sin(q3), cos(q3)); 
+
+if q1 <= q1_lim(1) && q1 >= q1_lim(2)
+    disp('Beyond 1st Joint Angle');
+    return;
+end
+
+
+
+
 end

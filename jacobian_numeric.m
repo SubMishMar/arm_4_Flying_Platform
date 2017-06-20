@@ -5,9 +5,9 @@ close all
 %% DH Parameters 
 q1 = pi/3;
 q2 = pi/3;
-q3 = -pi/3;
-l2 = 0.20;
-l3 = 0.15;
+q3 = pi/3;
+l2 = 0.40;
+l3 = 0.20;
 theta = [q1 q2 q3 0];
 r = zeros(1,4);
 alpha = [ 0, pi/2, 0, 0];
