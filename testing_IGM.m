@@ -4,11 +4,18 @@ clc
 l2 = 0.20;
 l3 = 0.40;
 
-x =  0.30;
-y =  0.30;
-z =  0.0;
 
-[q1, q2, q3] = IGM(x, y, z, l2, l3);
+
+xW =   0.4;
+yW =   0.4;
+zW =   0;
+
+RotyPIby2 = [0 0 1;0 1 0;-1 0 0];
+rR = inv(RotyPIby2)*[xW; yW; zW];
+xR = rR(1);
+yR = rR(2);
+zR = rR(3);
+[q1, q2, q3] = IGM(xR, yR, zR, l2, l3);
 
 Q1 = q1*180/pi
 Q2 = q2*180/pi

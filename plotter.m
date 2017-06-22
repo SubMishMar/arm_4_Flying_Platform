@@ -15,14 +15,16 @@ for i = 3:5
      T(:,:,i) = T(:,:,i-1)*DH_transformation(alpha(i-1), d(i-1), theta(i-1), r(i-1));
 end
 
+% Given below is wRr, the transform from robot frame to world frame.
 RotyPIby2 = [0 0 1;0 1 0;-1 0 0];
 T_RotyPIby2 = [RotyPIby2 zeros(3,1);0 0 0 1];
+
 %% Plotter
 figure(n)
 for i = 1:5
-   a_xi = T_RotyPIby2 * T(:,:,i)*[ 0.05 ; 0 ; 0 ; 1 ]; a_xi = a_xi(1:3);
-   a_yi = T_RotyPIby2 * T(:,:,i)*[ 0 ; 0.05 ; 0 ; 1 ]; a_yi = a_yi(1:3);
-   a_zi = T_RotyPIby2 * T(:,:,i)*[ 0 ; 0 ; 0.05 ; 1 ]; a_zi = a_zi(1:3);
+   a_xi = T_RotyPIby2*T(:,:,i)*[ 0.05 ; 0 ; 0 ; 1 ]; a_xi = a_xi(1:3);
+   a_yi = T_RotyPIby2*T(:,:,i)*[ 0 ; 0.05 ; 0 ; 1 ]; a_yi = a_yi(1:3);
+   a_zi = T_RotyPIby2*T(:,:,i)*[ 0 ; 0 ; 0.05 ; 1 ]; a_zi = a_zi(1:3);
    P_i = RotyPIby2*T(1:3,4,i);
    if i>1
        P_i_1 = RotyPIby2*T(1:3,4,i-1);

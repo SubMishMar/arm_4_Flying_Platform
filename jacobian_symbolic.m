@@ -17,12 +17,15 @@ for i = 3:5
      T(:,:,i) = simplify( T(:,:,i-1)*DH_transformation(alpha(i-1), d(i-1), theta(i-1), r(i-1)));
 end
 
+% Given below is wRr, the transform from robot frame to world frame.
+RotyPIby2 = [0 0 1;0 1 0;-1 0 0];
+T_RotyPIby2 = [RotyPIby2 zeros(3,1);0 0 0 1];
 
 %% Jacobian Calculation
 
 for i = 2:5
-   az_i = T(1:3,1:3,i)*[0 ; 0 ; 1];
-   w = T(1:3,4,5) - T(1:3,4,i);
+   az_i = RotyPIby2*T(1:3,1:3,i)*[0 ; 0 ; 1];
+   w = RotyPIby2*(T(1:3,4,5) - T(1:3,4,i));
    J(:,i-1) = [cross(az_i,w); az_i];
 end
 J = simplify(J);

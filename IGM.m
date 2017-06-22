@@ -97,15 +97,15 @@ end
 
 q2(1) = atan2(sin(q2(1)), cos(q2(1)));
 q2(2) = atan2(sin(q2(2)), cos(q2(2)));
-q2(3) = pi+q2(1);
+q2(3) = (pi-q2(1));
 q2(3) = atan2(sin(q2(3)), cos(q2(3)));
-q2(4) = pi+q2(2);
+q2(4) = (pi-q2(2));
 q2(4) = atan2(sin(q2(4)), cos(q2(4)));
 
 q3(1) = atan2(sin(q3(1)), cos(q3(1)));
 q3(2) = atan2(sin(q3(2)), cos(q3(2)));
-q3(3) = q3(1);
-q3(4) = q3(2);
+q3(3) = -q3(1);
+q3(4) = -q3(2);
 
 
 end

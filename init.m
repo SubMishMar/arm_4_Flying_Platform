@@ -12,5 +12,5 @@
 
 l2 = 0.40;
 l3 = 0.20;
-K = 500*diag(ones(1,3));
+K = 5*diag(ones(1,3));
 sim('kinematic_model_control');
