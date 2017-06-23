@@ -1,7 +1,7 @@
 function [q1, q2, q3] = IGM(x, y, z, l2, l3)
 % q1(1), q2, q3 store the corresponding joint angles 
 % in radians
-
+% x, y, z are in robot base frame
 q1 = zeros(1, 4);
 q2 = zeros(1, 4);
 q3 = zeros(1, 4);

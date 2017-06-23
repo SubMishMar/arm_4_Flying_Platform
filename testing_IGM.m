@@ -6,9 +6,9 @@ l3 = 0.40;
 
 
 
-xW =   0.4;
-yW =   0.4;
-zW =   0;
+xW =   0.0;
+yW =   0.0;
+zW =  -0.6;
 
 RotyPIby2 = [0 0 1;0 1 0;-1 0 0];
 rR = inv(RotyPIby2)*[xW; yW; zW];
