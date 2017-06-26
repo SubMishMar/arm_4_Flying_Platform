@@ -10,7 +10,7 @@ l3 = 0.15;
 % The final point to be reached is given below
 % The initial points are given in terms of joint coordinates.
 qi = [0; 0; 0];
-rfW = [0.1; 0; -0.2];
+rfW = [0.05; 0.1; -0.1];
 RotyPIby2 = [0 0 1;0 1 0;-1 0 0]; %Rotation from Robot to World Frame
 rfR = inv(RotyPIby2)*rfW;
 q = IGM_withConstraints(rfR(1), rfR(2), rfR(3), q1_lim, q2_lim, q3_lim, l2, l3)
