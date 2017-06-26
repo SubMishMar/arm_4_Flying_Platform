@@ -1,5 +1,6 @@
-function plotter(q1, q2, q3, l2, l3, n)
+function plotter(q1, q2, q3, l2, l3, n, hold_on_off)
 % n is the figure number
+% hold_on_off to turn hold on = 1 or off = any other number
 %% DH Params for the joint config
 theta = [q1(1) q2(1) q3(1) 0];
 r = zeros(1,4);
@@ -17,6 +18,7 @@ end
 
 % Given below is wRr, the transform from robot frame to world frame.
 RotyPIby2 = [0 0 1;0 1 0;-1 0 0];
+%RotyPIby2 = eye(3,3);
 T_RotyPIby2 = [RotyPIby2 zeros(3,1);0 0 0 1];
 
 %% Plotter
@@ -30,7 +32,7 @@ for i = 1:5
        P_i_1 = RotyPIby2*T(1:3,4,i-1);
        % Plottting Links
        plot3(linspace(P_i_1(1),P_i(1),100),linspace(P_i_1(2),P_i(2),100),....
-       linspace(P_i_1(3),P_i(3),100),'c', 'LineWidth',4)
+       linspace(P_i_1(3),P_i(3),100),'c', 'LineWidth',4);
        hold on;
    end
     % Transformed Frames
@@ -66,5 +68,14 @@ zlabel('z-axis');
 title(['Simplified schematic of the aerial arm in joint config ', num2str(n)])
 pbaspect([1 1 1])
 axis square
-hold off;
+if hold_on_off == 1
+    
+    hold on;
+    
+else
+    
+    hold off;
+    
+end
+
 end

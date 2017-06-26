@@ -6,38 +6,48 @@ q1 = zeros(1, 4);
 q2 = zeros(1, 4);
 q3 = zeros(1, 4);
 
-
-q1(1) = atan2(y, x);
-q1(2) = q1(1);
-q1(3) = atan2(y, x) + pi;
-q1(3) = atan2(sin(q1(3)), cos(q1(3)));
-q1(4) = q1(3);
+if x<0 && y == 0
+  q1(1) = 0;
+  q1(2) = q1(1);
+  q1(3) = pi;
+  q1(3) = atan2(sin(q1(3)), cos(q1(3)));
+  q1(4) = q1(3);
+elseif x==0 && y<0 
+  q1(1) = pi/2;
+  q1(2) = q1(1);
+  q1(3) = 3*pi/2;
+  q1(3) = atan2(sin(q1(3)), cos(q1(3)));
+  q1(4) = q1(3);
+else
+  q1(1) = atan2(y,x);
+  q1(2) = q1(1);
+  q1(3) = atan2(y,x) + pi;
+  q1(3) = atan2(sin(q1(3)), cos(q1(3)));
+  q1(4) = q1(3);   
+end
 
 if sin(q1(1)) >= -0.000001 && sin(q1(1)) <= 0.000001
     
     %disp('sin(q1(1)) is zero');
-    
+
     q3(1) = acos((x^2 + z^2 - l2^2 -l3^2)/(2*l2*l3));
     if(isreal(q3(1))) %% not a smart way to check, can also check if the
         %point is within the workspace by checking if the thing within the 
         % acos() function is between -1 and 1, but whatever.. 
-    if x < 0
-    q2(1) = atan2(z, x) - atan2(l3*sin(q3(1)), l2 + l3*cos(q3(1))) + pi;
-    else
-    q2(1) = atan2(z, x) - atan2(l3*sin(q3(1)), l2 + l3*cos(q3(1))) ;
-    end
+
+    q2(1) = (atan2(z, x) - atan2(l3*sin(q3(1)), l2 + l3*cos(q3(1))));
+ 
+
     else
         disp('Point Not Reachable');
         return;
     end
-    
+  
     q3(2) = -acos((x^2 + z^2 - l2^2 -l3^2)/(2*l2*l3));
     if(isreal(q3(2)))
-    if x < 0
-    q2(2) = atan2(z, x) - atan2(l3*sin(q3(2)), l2 + l3*cos(q3(2))) + pi;
-    else
+
     q2(2) = atan2(z, x) - atan2(l3*sin(q3(2)), l2 + l3*cos(q3(2)));   
-    end
+
     else
         disp('Point Not Reachable');
         return;
@@ -50,23 +60,19 @@ elseif cos(q1(1)) >= -0.000001 && cos(q1(1)) <= 0.000001
     q3(1) = acos((y^2 + z^2 - l2^2 -l3^2)/(2*l2*l3));
     
     if(isreal(q3(1)))
-    if y < 0
-    q2(1) = atan2(z, y) - atan2(l3*sin(q3(1)), l2 + l3*cos(q3(1)))+pi;
-    else
+
     q2(1) = atan2(z, y) - atan2(l3*sin(q3(1)), l2 + l3*cos(q3(1))) ;
-    end
+
     else
         disp('Point Not Reachable');
         return;
     end
     
-    if(isreal(q3(2)))
     q3(2) = -acos((y^2 + z^2 - l2^2 -l3^2)/(2*l2*l3));
-    if y < 0
-    q2(2) = atan2(z, y) - atan2(l3*sin(q3(2)), l2 + l3*cos(q3(2)))+pi;
-    else
+    if(isreal(q3(2)))
+
     q2(2) = atan2(z, y) - atan2(l3*sin(q3(2)), l2 + l3*cos(q3(2)));   
-    end
+
     else
         disp('Point Not Reachable');
         return;
